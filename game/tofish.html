@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+	<style type="text/css">
+	</style>
+	<div class="container d-flex justify-content-center">
+		<div id="block" class="" style="width: 80%;">
+			<div style="display: flex;justify-content:center;">
+				<h2 style="" id="title">A方攻</h2>
+			</div>
+		</div>
+	</div>
+	<div id="footer" class="d-flex justify-content-center">
+		
+	</div>
+	<script type="text/javascript">
+	var click1=0;
+	var click=0;
+	var pokea=[1,2,3,4,5,6,7,8,9,10,"J","Q","K"];
+	var pokeb=["♣","♠","♥","♦"];
+	var pokenum=[52];
+	var apoint;
+	var bpoint;
+	var aid;
+	var bid;
+	var aapoint=0;
+	var bbpoint=0;
+	var adou;
+	var bdou;
+	setInterval(()=>{
+		if(click1%2==0)
+		{
+			document.getElementById("title").innerHTML="A方攻";
+		}
+		else if(click1%2==1)
+		{
+			document.getElementById("title").innerHTML="B方攻";
+		}
+	},100)
+	for(i=0;i<52;i++)
+	{
+		pokenum[i]=i;
+	}
+	for(i=0;i<10000;i++)
+	{
+		var b=Math.floor(Math.random()*51)+1;
+		var c=Math.floor(Math.random()*51)+1;
+		var a=0;
+		a=pokenum[c];
+		pokenum[c]=pokenum[b];
+		pokenum[b]=a;
+	}
+	for(i=0;i<52;i++)
+	{	
+		var MyDiv =document.getElementById("block");
+	    var bt =document.createElement("button");
+	    bt.style.backgroundImage = "url('fannyback.jpg')";
+	    bt.style.backgroundSize = "cover";
+	    bt.innerHTML = ".";
+	    bt.style.width="65px";
+	    bt.style.height="90px";
+	    bt.style.margin ="5px";
+	    bt.style.fontSize="25px";
+	    bt.id=pokenum[i];
+	    var p=pokeb[pokenum[i]%4]+pokea[pokenum[i]%13];
+	    if(i%13==0)
+	    {
+	    	var a=document.getElementById("block");
+	    	// var b=document.createElement("br");
+	    	// a.appendChild(b);
+	    	
+	    }
+	    bt.onclick = function (e) {
+	    	if(click<2)
+	    	{
+		    	if(click%2==0)
+		    	{
+		    	    // click1+=0.5;
+		    		adou=this.id;
+		    		var poke=document.getElementById(this.id);
+		    		poke.innerHTML=pokeb[pokenum[this.id]%4]+pokea[pokenum[this.id]%13];
+		    		poke.style.backgroundImage = "";
+		    		poke.style.fontSize="25px";
+		    		poke.style.width="65px";
+		   			poke.style.height="90px";
+		   	 		poke.style.margin ="5px";
+		    		apoint=pokea[pokenum[this.id]%13];
+		    		aid=this.id;
+		    	}
+		    	else
+		    	{
+		    		// click1+=0.5;
+		    		bdou=this.id;
+		    		if(adou==bdou)
+		    		{
+		    			alert("不能重複按同一張");
+		    			click=0;
+		    			click1-=0.5;
+		    		}
+		    		else
+		    		{
+	    				bid=this.id;
+			    		var poke=document.getElementById(this.id);
+			    		poke.innerHTML=pokeb[pokenum[this.id]%4]+pokea[pokenum[this.id]%13];
+			    		poke.style.backgroundImage="";
+			    		poke.style.fontSize="25px";
+			    		bpoint=pokea[pokenum[this.id]%13];
+			    		if(apoint==bpoint)
+			    		{
+			    			
+			    			if(click1%2==0)
+			    			{	
+			    				aapoint+=1;
+			    				document.getElementById("a").innerHTML="a方得"+aapoint+"分";
+			    			}
+			    			else
+			    			{
+			    				bbpoint+=1;
+			    				document.getElementById("b").innerHTML="b方得"+bbpoint+"分";
+			    				
+			    			}
+			    			document.getElementById(aid).disabled="true";
+			    			document.getElementById(bid).disabled="true";
+			    			click=-1;
+			    		}
+			    		else
+			    		{
+			    			click1+=1;
+			    			setTimeout(()=>{
+								document.getElementById(aid).style.backgroundImage = "url('fannyback.jpg')";
+			    				document.getElementById(bid).style.backgroundImage = "url('fannyback.jpg')";
+			    				document.getElementById(aid).innerHTML=".";
+			    				document.getElementById(bid).innerHTML=".";
+			    				apoint=-1;
+			   				 	bpoint=-1;
+			   				 	click=0;
+			    			},1000)
+			    			
+			    			// setTimeout(()=>{
+				    		// 	for(i=0;i<52;i++)
+				    		// 	{
+				    		// 		var a=document.getElementById(i);
+				    		// 		a.innerHTML=pokeb[pokenum[i]%4]+pokea[pokenum[i]%13];
+				    		// 		a.style.backgroundImage = "";
+				    				
+				    		// 	}
+			    			// },1000)
+			    		}
+		    		}
+		    	
+		    		
+		    	}
+	    	}
+	    	click+=1;
+	    };
+	    a.appendChild(bt); 
+	}
+	var a=document.getElementById("footer");
+	var b=document.createElement("br");
+	document.body.appendChild(b);
+	var b=document.createElement("button");
+	b.innerHTML="A方分數";
+	b.style.width="200px";
+	b.style.height="200px";
+	b.style.fontSize="25px";
+	b.id="a";
+	a.appendChild(b);
+	var b=document.createElement("button");
+	b.innerHTML="B方分數";
+	b.id="b";
+	b.style.width="200px";
+	b.style.height="200px";
+	b.style.fontSize="25px";
+	a.appendChild(b);
+	</script>
+</body>
+</html>
