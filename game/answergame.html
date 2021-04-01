@@ -8,19 +8,23 @@
 	<link rel="shortcut icon" href="#"/>
 </head>
 <body >
-	<div class="" style="height: 700px;background: url(4.png);background-size: 100% 102%;width: 1200px;">
-		<div class="row justify-content-center align-items-center" style="position: relative;">
-			<div id="reset" class="col" style="height:100px;width:100px;position: absolute;z-index: 5;opacity: 0;">
-				<input type="submit" value="重來" onclick="restart()">
-				<a href="javascript:window.location.reload()">重新整理</a>
-				<script type="text/javascript">
+	<div class="" style="height: 700px;background: url(4.png);background-size: 100% 102%;width: 1200px;position: relative;">
+		<div class="row justify-content-center align-items-center">
+			<div class="container" id="reset" class="col bg-danger d-flex" style="height:100%;width:100%;position: absolute;z-index: 5;backdrop-filter:blur(15px);" hidden="true">
+				<div class="row justify-content-center align-items-center h-100">
+					<div class="col-3">
+						<input type="submit" value="重來" onclick="restart()" class="w-100">
+					</div>
+					<div class="col-3">
+						<input type="submit" value="看解答" class="w-100">
+					</div>
+				</div>
+			</div>
+			<script type="text/javascript">
 					function restart(){
-						reload();
-						console.log(123);
+						window.location.reload();
 					}
 				</script>
-				<input type="submit" value="看解答">
-			</div>
 			<div class="col-12">
 				<div class="row">
 					<div class="" style="width: 5%;"></div>
@@ -68,8 +72,8 @@
 			</div>
 		</div>
 	</div>
-	<audio id="btnmu" autoplay controls hidden="true">
-	  <source src="music/btn.mp3" autoplay type="audio/mpeg">
+	<audio id="btnmu" class="bg-danger" controls hidden="true">
+	  <source src="music/btn.mp3"  type="audio/mpeg">
 	</audio >
 	<audio hidden="true" id="backmusic" controls loop style="opacity: 1;">
 		<source  src="music/back.mp3" >
@@ -87,8 +91,31 @@
 			var question=["2.齲齒的形成有四個影響因素，下列何者不是?",
 						  "3.一般來說，正常人共有幾顆恆牙(包括智齒)?",
 						  "4.一般狀況下，我們應該多久做一次定期口腔檢查?",
-						  "5.若沒刷牙，黏附在牙齒上的細菌初期會形成甚麼?"];
+						  "5.若沒刷牙，黏附在牙齒上的細菌初期會形成甚麼?",
+						  "6.人的一生有幾顆牙?",
+						  "7.牙線操作基本動作(A)手臂長約45公分長(B)呈[C]字型(C)割出嘎吱聲(D)前後割(E)上下割。何者為是?",
+						  "8.從小保護牙，老來不缺牙，保護牙齒四部曲，以下何者為是?",
+						  "9.中年人牙齒喪失的原因?",
+						  "10.兒童口腔常見四大問題:(A)齲齒(B)牙周疾病(C)埋伏齒(D)多生牙(E)先天缺牙(F)齒列不整(G)牙齒外傷",
+						  "11.每顆牙齒都有它的功能，請問前臼齒的主要功能為何?",
+						  "12.恆牙第一大臼齒萌出時間?",
+						  "13.使用牙線，主要是清潔何處?",
+						  "14.",
+						  "15.",
+						  "16.",
+						  "17.",
+						  "18.",
+						  "19.",
+						  "20.",];
+			var btn_answer1=["細菌的存在","20顆","3個月","色素沉澱"];
+			var btn_answer2=["食物的數量","24顆","半年","食物殘渣"];
+			var btn_answer3=["清潔牙齒","28顆","一年","牙菌斑"];
+			var btn_answer4=["食物總類","32顆","兩年","牙結石"];
 			document.getElementById("123").innerHTML=question[questionnumber];
+			document.getElementById("1").innerHTML=btn_answer1[questionnumber];
+			document.getElementById("2").innerHTML=btn_answer2[questionnumber];
+			document.getElementById("3").innerHTML=btn_answer3[questionnumber];
+			document.getElementById("4").innerHTML=btn_answer4[questionnumber];
 			var btn=document.getElementById(e.id);
 				btn.style.border="5px solid red";
 			setTimeout(()=>{
@@ -99,7 +126,7 @@
 			if(questionnumber==4)
 			{
 				var reset=document.getElementById("reset");
-				reset.style.opacity=1;	
+				reset.hidden=false;	
 			}
 			if(e.id==title_answer[questionnumber])
 			{
