@@ -8,7 +8,7 @@ var questionnumber=0;
 			var music=document.getElementById("btnmu");
 			music.currentTime = 0;
 			music.play();
-			var title_answer=[2,4,4,2,3,4,4,3,2,1,3,4,3,2,1,4,4,4,4,1];
+			var title_answer=["q2","q4","q4","q2","q3","q4","q4","q3","q2","q1","q3","q4","q3","q2","q1","q4","q4","q4","q4","q1"];
 			var btn=document.getElementById("1");
 			var question=["2.齲齒的形成有四個影響因素，下列何者不是?",
 						  "3.一般來說，正常人共有幾顆恆牙(包括智齒)?",
@@ -52,7 +52,6 @@ var questionnumber=0;
 				var btn=document.getElementById(e.id);
 				btn.style.border="5px solid gray";
 			},1000)
-			console.log(questionnumber);
 			if(questionnumber==19)
 			{
 				var reset=document.getElementById("reset");
