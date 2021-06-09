@@ -30,7 +30,7 @@ var questionnumber=0;
 						  "19.下列哪些為刷牙最重要的觀念:(A)刷牙的方法(B)刷牙的次數(C)刷牙的順序(D)刷牙的時機",
 						  "20.下列哪些為牙齒的主要功能:(A)咀嚼食物(B)幫助發音(C)保持美好臉型(D)喝飲料",];
 			var btn_answer1=["細菌的存在","20顆","3個月","色素沉澱","20顆","a+b+c","剛出生的時候即長出","牙縫間的牙肉",
-						     "餐後即睡前","咬合面","睡前一定要刷牙，一天至少兩次","齲齒","A+B+C+D","壓碎食物","抑制口腔細菌滋長",
+						     "餐後及睡前","咬合面","睡前一定要刷牙，一天至少兩次","齲齒","A+B+C+D","壓碎食物","抑制口腔細菌滋長",
 						     "氟化納0.2%含氟濃度約900ppm，每星期使用一次，每次10cc","A+B","A+B","	A+B+C"];
 			var btn_answer2=["食物的數量","24顆","半年","食物殘渣","28顆","a+b+c+e","大約在出生六個月",
 						     "牙齒鄰接表面","每晚睡前","牙冠","要有氧，使用含氧牙膏","牙結石","A+B+F+G","研磨食物",
@@ -41,16 +41,17 @@ var questionnumber=0;
 							 "A+C+D","A+C+D","A+C+D"];
 			var btn_answer4=["食物總類","32顆","兩年","牙結石","52顆","以上皆是","國中一年級青春期","以上皆是","覺得髒就刷","以上皆是","以上皆是",
 							 "牙齦炎","A+B+E+G","撕裂食物","以上皆是","以上皆是","A+B+C+D","A+B+C+D","A+B+C+D"];
-			document.getElementById("title").innerHTML=question[questionnumber];
-			document.getElementById("q1").innerHTML=btn_answer1[questionnumber];
-			document.getElementById("q2").innerHTML=btn_answer2[questionnumber];
-			document.getElementById("q3").innerHTML=btn_answer3[questionnumber];
-			document.getElementById("q4").innerHTML=btn_answer4[questionnumber];
 			var btn=document.getElementById(e.id);
 				btn.style.border="5px solid red";
 			setTimeout(()=>{
 				var btn=document.getElementById(e.id);
 				btn.style.border="5px solid gray";
+				document.getElementById("title").innerHTML=question[questionnumber];
+				document.getElementById("q1").innerHTML=btn_answer1[questionnumber];
+				document.getElementById("q2").innerHTML=btn_answer2[questionnumber];
+				document.getElementById("q3").innerHTML=btn_answer3[questionnumber];
+				document.getElementById("q4").innerHTML=btn_answer4[questionnumber];
+				questionnumber++;
 			},1000)
 			if(questionnumber==19)
 			{
@@ -68,6 +69,5 @@ var questionnumber=0;
 				document.getElementById("F").innerHTML=Fpoint;
 				alert("答錯了!!");
 			}
-			questionnumber++;
 			document.getElementById("point").innerHTML=Tpoint*5;
 		}
