@@ -69,7 +69,7 @@ var questionnumber=0;
 				document.getElementById("F").innerHTML=Fpoint;
 				setTimeout(()=>{
 					alert("答錯了!!");
-				},50)
+				},100)
 			}
 			document.getElementById("point").innerHTML=Tpoint*5;
 		}
