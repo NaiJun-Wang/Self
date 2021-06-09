@@ -67,7 +67,9 @@ var questionnumber=0;
 			{
 				Fpoint++;
 				document.getElementById("F").innerHTML=Fpoint;
-				alert("答錯了!!");
+				setTimeout(()=>{
+					alert("答錯了!!");
+				},50)
 			}
 			document.getElementById("point").innerHTML=Tpoint*5;
 		}
