@@ -2,6 +2,7 @@ function restart(){
 	window.location.reload();
 }
 var questionnumber=0;
+var realanswer=["2","4","4","2","3","4","4","3","2","1","3","4","3","2","1","4","4","4","4","1"];
 		Tpoint=0;
 		Fpoint=0;
 		function answer(e) {
@@ -68,7 +69,7 @@ var questionnumber=0;
 				Fpoint++;
 				document.getElementById("F").innerHTML=Fpoint;
 				setTimeout(()=>{
-					alert("答錯了!!");
+					alert("正確答案為"+realanswer[questionnumber]);
 				},100)
 			}
 			document.getElementById("point").innerHTML=Tpoint*5;
